@@ -16,10 +16,10 @@ export default function Home() {
 		const interval = setInterval(() => {
 			setHero((prev) => (prev + 1) % heroImages.length)
 		}, 4000)
-
 		return () => clearInterval(interval)
 
 	}, [])
+
 	return (
 		<>
 			<main className="relative flex md:flex-row h-screen scrollbar-none">

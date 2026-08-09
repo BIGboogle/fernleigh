@@ -8,7 +8,7 @@ export default function Filter({ styles, type }) {
         <div>
             <div className="flex items-center justify-between mb-2">
                 <h1 className="text-xl font-alt">{type.toUpperCase()}</h1>
-                <Link href='/catalog/agbada' className="flex items-center font-text gap-1 hover:text-amber-600">See all
+                <Link href='/catalog/agbada' className="flex items-center font-text gap-1">See all
                     <ArrowRight size={15} />
                 </Link>
             </div>

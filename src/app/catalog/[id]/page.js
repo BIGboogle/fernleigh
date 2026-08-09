@@ -27,7 +27,7 @@ export default function StylePage({ params }) {
 
             <div className="flex flex-col md:flex-row md:justify-between space-y-6 px-4">
                 <div className=" font-text">
-                    <span className="text-lg">Type : </span>
+                    <span className="text-sm">Type : </span>
                     <span>{style.type}</span>
                 </div>
                 <div className=" font-text">
