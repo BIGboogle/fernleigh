@@ -1,7 +1,18 @@
+"use client"
 import Link from "next/link";
 import Logo from "./Logo";
+import { usePathname } from "next/navigation";
+
 
 export default function Footer() {
+    const pathname = usePathname()
+
+    if (pathname === ("/signup","/login") ) {
+        return (
+            <></>
+        )
+    }
+
     return (
         <main className="bottom-0 w-full border-t border-slate-200 pt-10 px-4">
             <div className="flex flex-col md:flex-row justify-between gap-4 text-left md:text-center">

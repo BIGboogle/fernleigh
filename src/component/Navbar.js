@@ -29,7 +29,7 @@ export default function Navbar() {
                     </div>
                 </>
             }
-            {pathname !== "/" &&
+            {pathname !== "/" || pathname !== "/signup" || pathname !== "/login" &&
                 <>
                     <div className={`fixed z-40 h-[72px] flex items-center top-0 inset-x-0 justify-between ${scrolled ? `bg-black/50 backdrop-blur-sm text-white`: `bg-transparent text-black`} px-4 py-2`}>
                         <h1 className="text-3xl font-alt flex items-center gap-2 font-medium">
