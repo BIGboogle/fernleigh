@@ -4,7 +4,10 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import Logo from "./Logo"
 import { useState, useEffect } from "react"
+import { useAuth } from "@/app/context/AuthContext"
 export default function Navbar() {
+    const { user } = useAuth()
+    console.log(user)
     const [scrolled, setScrolled] = useState(false)
     const pathname = usePathname()
     let currentPath = ""
@@ -24,14 +27,14 @@ export default function Navbar() {
         <>
             {pathname === "/" &&
                 <>
-                    <div className={`z-40 fixed justify-between items-center w-screen flex top-0 ${scrolled ? `bg-black/50 backdrop-blur-sm`: `bg-transparent`} px-4 h-[72px] `}>
+                    <div className={`z-40 fixed justify-between items-center w-screen flex top-0 ${scrolled ? `bg-black/50 backdrop-blur-sm` : `bg-transparent`} px-4 h-16 `}>
                         <Logo display="white" />
                     </div>
                 </>
             }
-            {pathname !== "/" || pathname !== "/signup" || pathname !== "/login" &&
+            {pathname === ("/catalog") &&
                 <>
-                    <div className={`fixed z-40 h-[72px] flex items-center top-0 inset-x-0 justify-between ${scrolled ? `bg-black/50 backdrop-blur-sm text-white`: `bg-transparent text-black`} px-4 py-2`}>
+                    <div className={`fixed z-40 h-16 flex items-center top-0 inset-x-0 justify-between ${scrolled ? `bg-black/50 backdrop-blur-sm text-white` : `bg-transparent text-black`} px-4`}>
                         <h1 className="text-3xl font-alt flex items-center gap-2 font-medium">
                             {pathname.length > 8 &&
                                 <button onClick={() => history.back()}>
@@ -40,9 +43,11 @@ export default function Navbar() {
                             }
                             {currentPath}</h1>
                         <div>
-                            <Link href="/account" className="p-2 inline-block hover:bg-black/10 rounded-full">
-                                <User size={22} />
-                            </Link>
+                            {user ? (
+                                <Link href="/account" className="inline p-2"><User size={18}/></Link>
+                            ) : (
+                                <Link href="/login" className="py-2 px-5 rounded-full border border-black/50">Login</Link>
+                            ) }
                         </div>
                     </div>
                 </>

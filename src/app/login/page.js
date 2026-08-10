@@ -1,5 +1,6 @@
 "use client"
 import { useState } from "react"
+import Link from "next/link"
 import { supabase } from "../lib/supabaseClient"
 import { useRouter } from "next/navigation"
 
@@ -17,7 +18,7 @@ export default function SignupPage() {
         }
         else {
             setError("")
-            router.push("/account")
+            router.push("/catalog")
         }
 
     }
@@ -25,7 +26,7 @@ export default function SignupPage() {
         <main className="w-screen max-w-md my-auto mx-auto py-8 px-4">
             <h1 className="text-3xl text-center font-medium font-alt mb-4">Login to Account</h1>
 
-            <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+            <form className="flex flex-col gap-4 font-text" onSubmit={handleSubmit}>
                 <input
                     placeholder="Email"
                     value={email}
@@ -41,9 +42,10 @@ export default function SignupPage() {
                     onChange={(e) => setPassword(e.target.value)}
                 />
                 {error && <p className="py-2 text-center bg-red-100 border border-red-700 text-red-700 rounded-xl">{error}</p>}
-                <button type="submit" className="py-3 text-black bg-black/10 border border-black  rounded-full">
+                <button type="submit" className="py-3 text-black bg-black/10 border border-black  rounded-full active:scale-95 transition-transform">
                     Log In
                 </button>
+                <p className="text-center">Already have an account? <Link href="/signup" className="underline">create account</Link></p>
             </form>
         </main>
     )
