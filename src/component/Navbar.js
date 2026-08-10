@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation"
 import Logo from "./Logo"
 import { useState, useEffect } from "react"
 import { useAuth } from "@/app/context/AuthContext"
+
 export default function Navbar() {
     const { user } = useAuth()
     console.log(user)
@@ -13,6 +14,9 @@ export default function Navbar() {
     let currentPath = ""
     if (pathname.startsWith("/catalog")) {
         currentPath = "Catalog"
+    }
+    else if (pathname.startsWith("/account")) {
+        currentPath = "Account"
     }
 
     useEffect(() => {
@@ -32,7 +36,7 @@ export default function Navbar() {
                     </div>
                 </>
             }
-            {pathname === ("/catalog") &&
+            {pathname !== "/" &&
                 <>
                     <div className={`fixed z-40 h-16 flex items-center top-0 inset-x-0 justify-between ${scrolled ? `bg-black/50 backdrop-blur-sm text-white` : `bg-transparent text-black`} px-4`}>
                         <h1 className="text-3xl font-alt flex items-center gap-2 font-medium">
@@ -43,11 +47,10 @@ export default function Navbar() {
                             }
                             {currentPath}</h1>
                         <div>
-                            {user ? (
-                                <Link href="/account" className="inline p-2"><User size={18}/></Link>
-                            ) : (
+                            {!user && pathname !== "/account" &&
                                 <Link href="/login" className="py-2 px-5 rounded-full border border-black/50">Login</Link>
-                            ) }
+                            }
+
                         </div>
                     </div>
                 </>

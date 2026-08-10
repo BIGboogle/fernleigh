@@ -40,18 +40,18 @@ export default function SignupPage() {
                     <input
                         placeholder="Password"
                         value={password}
-                        type={shown ? `password` : `text`}
+                        type={shown ? `text` : `password`}
                         className="py-2.5 flex-1 px-4 border-black/50 outline-0"
                         onChange={(e) => setPassword(e.target.value)}
                     />
                     {shown ? (
                     <div className="p-2 hover:bg-black/10 rounded-full" onClick={()=> setShown(false)}>
-                        <Eye size={20}/>
+                        <EyeClosed size={20}/>
                     </div>
                     ):
                     (
                     <div className="p-2 hover:bg-black/10 rounded-full" onClick={()=> setShown(true)}>
-                        <EyeClosed size={20}/>
+                        <Eye size={20}/>
                     </div>
                     )
                 }
