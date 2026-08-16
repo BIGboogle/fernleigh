@@ -7,9 +7,9 @@ export default function catalog() {
     return (
         <main className="px-4 py-8">
             <div className="flex flex-col mt-8 gap-8 scrollbar-none">
-                <Filter styles={styles} type="bespoke" />
-                <Filter styles={styles} type="agbada" />
-                <Filter styles={styles} type="kaftan" />
+                <Filter styles={styles} category="bespoke" />
+                <Filter styles={styles} category="agbada" />
+                <Filter styles={styles} category="kaftan" />
             </div>
         </main>
     )

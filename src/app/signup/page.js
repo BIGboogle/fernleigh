@@ -2,12 +2,16 @@
 import { useState } from "react"
 import { supabase } from "../lib/supabaseClient"
 import Link from "next/link"
+import { Eye,EyeClosed } from "lucide-react"
+import { Fascinate } from "next/font/google"
+import { Fallback } from "next/dist/client/components/segment-cache/cache-map"
 
 export default function SignupPage() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [error, setError] = useState("")
     const [success, setSuccess] = useState("")
+    const [shown, setShown] = useState(false)
 
     async function handleSubmit(e) {
         if (!email || !password) {
@@ -18,7 +22,7 @@ export default function SignupPage() {
         if (error) {
             setError(error.message)
         }
-        else{
+        else {
             setError("")
             setSuccess("Account created. Check your Email for verification")
         }
@@ -37,14 +41,27 @@ export default function SignupPage() {
                     onChange={(e) => setEmail(e.target.value)}
                     required
                 />
-                <input
-                    placeholder="Password"
-                    value={password}
-                    type="password"
-                    className="py-2.5 px-4 rounded-full border border-black/50 outline-0"
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                />
+                <div className="border flex rounded-full overflow-hidden items-center">
+                    <input
+                        placeholder="Password"
+                        value={password}
+                        type={shown ? `text` : `password`}
+                        className="flex-1 py-2.5 px-4 outline-0"
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                    />
+                    {shown ? (
+                        <div className="p-3 h-full hover:bg-black/5" onClick={() => setShown(false)}>
+                            <EyeClosed size={18} />
+                        </div>
+                    ) :
+                        (
+                            <div className="p-3 h-full hover:bg-black/5" onClick={() => setShown(true)}>
+                                <Eye size={20} />
+                            </div>
+                        )
+                    }
+                </div>
                 {error && <p className="py-2 text-center bg-red-100 border border-red-700 text-red-700 rounded-xl">{error}</p>}
                 {success && <p className="py-2 text-center bg-green-100 border border-green-700 text-green-700 rounded-xl">{success}</p>}
                 <button type="submit" className="py-3 text-black bg-black/10 border border-black  rounded-full active:scale-95 transition-transform">

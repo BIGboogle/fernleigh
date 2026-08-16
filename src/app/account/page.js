@@ -23,7 +23,7 @@ export default function Account() {
         router.push("/")
     }
     return (
-        <main className="h-screen w-full flex flex-col max-w-md mx-auto px-4 py-4 pt-18">
+        <main className="h-screen w-full flex flex-col max-w-lg px-4 py-4 pt-18">
             <h1 className="text-2xl font-alt ">My profile</h1>
             <p className="font-text text-sm mb-8">{user.email}</p>
             <button onClick={handleLogout} className="py-3 font-text w-full rounded-full border border-red-700 bg-red-100 text-red-700 mt-auto">Log Out</button>

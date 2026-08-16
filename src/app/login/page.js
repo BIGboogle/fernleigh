@@ -37,7 +37,7 @@ export default function SignupPage() {
                     className="py-2.5 px-4 rounded-full border border-black/50 outline-0"
                     onChange={(e) => setEmail(e.target.value)}
                 />
-                <div className="flex border border-black/50 rounded-full items-center pr-4 overflow-hidden">
+                <div className="flex border border-black/50 rounded-full items-center overflow-hidden">
                     <input
                         placeholder="Password"
                         value={password}
@@ -46,12 +46,12 @@ export default function SignupPage() {
                         onChange={(e) => setPassword(e.target.value)}
                     />
                     {shown ? (
-                    <div className="p-2 hover:bg-black/10 rounded-full" onClick={()=> setShown(false)}>
+                    <div className="p-3 h-full hover:bg-black/5" onClick={()=> setShown(false)}>
                         <EyeClosed size={18}/>
                     </div>
                     ):
                     (
-                    <div className="p-2 hover:bg-black/10 rounded-full" onClick={()=> setShown(true)}>
+                    <div className="p-3 h-full hover:bg-black/5" onClick={()=> setShown(true)}>
                         <Eye size={20}/>
                     </div>
                     )
@@ -60,7 +60,7 @@ export default function SignupPage() {
                 </div>
                 {error && <p className="py-2 text-center bg-red-100 border border-red-700 text-red-700 rounded-xl">{error}</p>}
                 <button type="submit" className="py-3 text-black bg-black/10 border border-black  rounded-full active:scale-95 transition-transform">
-                    Log In
+                    Login
                 </button>
                 <p className="text-center">Don't have an account? <Link href="/signup" className="underline">create account</Link></p>
             </form>

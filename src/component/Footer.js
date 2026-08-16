@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 export default function Footer() {
     const pathname = usePathname()
 
-    if (pathname === "/signup" || pathname === "/login" || pathname === "/account") {
+    if (pathname === "/signup" || pathname === "/login" || pathname === "/account" || pathname === "/measurement") {
         return (
             <></>
         )
@@ -39,7 +39,7 @@ export default function Footer() {
             </div>
 
             <div className="py-3 w-full text-center font-alt border-t border-slate-100">2026 fernleigh.
-                <span className="ml-4">Designed by webmirror</span>
+                <span className="ml-4">Designed by Web4Tea</span>
             </div>
         </main>
     )

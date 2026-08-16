@@ -7,13 +7,19 @@ import { useState, useEffect } from "react"
 import { useAuth } from "@/app/context/AuthContext"
 
 export default function Navbar() {
-    const { user } = useAuth()
-    console.log(user)
-    const [scrolled, setScrolled] = useState(false)
-    const pathname = usePathname()
+    const { user } = useAuth();
+    console.log(user);
+    const [scrolled, setScrolled] = useState(false);
+    const pathname = usePathname();
+    const hideNav = pathname === "/login" || pathname === "/signup" || pathname === "/measurement"
+    let altPath = ""
+    if (pathname.endsWith("bespoke") || pathname.endsWith("agbada") || pathname.endsWith("kaftan")) {
+        altPath = "bespoke"
+    }
+
     let currentPath = ""
     if (pathname.startsWith("/catalog")) {
-        currentPath = "Catalog"
+        currentPath = "All Catalog"
     }
     else if (pathname.startsWith("/account")) {
         currentPath = "Account"
@@ -27,6 +33,10 @@ export default function Navbar() {
         return () => window.removeEventListener("scroll", handleScroll)
     }, []);
 
+
+    if (hideNav) {
+        return null
+    };
     return (
         <>
             {pathname === "/" &&
@@ -36,17 +46,21 @@ export default function Navbar() {
                     </div>
                 </>
             }
-            {pathname !== "/" &&
+            {currentPath &&
                 <>
                     <div className={`fixed z-40 h-16 flex items-center top-0 inset-x-0 justify-between ${scrolled ? `bg-black/50 backdrop-blur-sm text-white` : `bg-transparent text-black`} px-4`}>
-                        <h1 className="text-3xl font-alt flex items-center gap-2 font-medium">
-                                <button onClick={() => history.back()}>
-                                    <ArrowLeft size={20} />
-                                </button>
-                            {currentPath}</h1>
+                        <h1 className="text-[22px] font-text flex items-center gap-2 font-medium">
+                            <button onClick={() => history.back()}>
+                                <ArrowLeft size={20} />
+                            </button>
+                            {!altPath ? `${currentPath}` : null}
+                            {altPath &&
+                                <p className="capitalize">{altPath}</p>
+                            }
+                        </h1>
                         <div>
                             {!user && pathname !== "/account" &&
-                                <Link href="/login" className="py-2 px-5 rounded-full border border-black/50">Login</Link>
+                                <Link href="/login" className="py-2 px-5 font-text text-sm rounded-full border border-dashed">Login</Link>
                             }
                             {user && pathname !== "/account" &&
                                 <Link href="/account">

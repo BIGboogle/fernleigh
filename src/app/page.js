@@ -31,13 +31,13 @@ export default function Home() {
 				<div className="absolute inset-0 bg-black/40" />
 
 				<div className="absolute inset-0 flex flex-col items-center justify-center px-8 mb-5 text-white">
-					<h1 className="text-5xl md:text-7xl font-semibold font-alt">
+					<h1 className="text-5xl md:text-7xl font-alt font-semibold">
 						Tailored for Greatness
 					</h1>
-					<p className="text-xl  max-w-md text-center font-text mb-8">
+					<p className="text-xl max-w-md text-center font-text mb-8">
 						Bespoke tailoring and native fashion, made for men who lead.
 					</p>
-					<Link href='/catalog' className="flex items-center font-text font-semibold justify-center py-3 w-full max-w-lg border-2 border-white rounded-full hover:bg-white hover:text-black transition-colors">
+					<Link href='/catalog' className="flex items-center font-text justify-center py-3 w-full max-w-lg border-2 border-white rounded-full hover:bg-white hover:text-black transition-colors">
 						Book a fitting
 					</Link>
 				</div>
@@ -81,7 +81,7 @@ export default function Home() {
 
 				<div className=" max-w-6xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-center mx-auto">
 					<OfferList heading="Bespoke Tailoring" paragraph="Custom made pieces, fitted to you." href="beespoke" />
-					<OfferList heading="Ready-to-Wear" paragraph="Native fashion, Ready when you are." href="" rtw />
+					<OfferList heading="Ready-to-Wear" paragraph="Native fashion, Ready when you are." href=""/>
 					<OfferList heading="Wardrobe Subcription" paragraph="Build your wardrobe, stress free, all year." href="subscription" />
 					<OfferList heading="Fashion Academy" paragraph="Learn the craft, through hands-on training" href="academy" />
 				</div>
