@@ -2,8 +2,8 @@
 import { styles } from "@/style";
 import { Bookmark, Heart } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 import { use } from "react";
+import Link from "next/link";
 
 export default function StylePage({ params }) {
     const { id } = use(params);
@@ -44,7 +44,7 @@ export default function StylePage({ params }) {
             </div>
 
 
-            <button className="py-3 w-full mx-auto max-w-lg font-text rounded-full border bg-black/10 text-center mt-8 active:scale-90 transition-transform">Book fitting</button>
+            <Link href={`/catalog/${id}/checkout`} className="py-3 w-full mx-auto max-w-lg font-text rounded-full border bg-black/10 text-center mt-8 active:scale-90 transition-transform">Book fitting</Link>
         </main >
     )
 }

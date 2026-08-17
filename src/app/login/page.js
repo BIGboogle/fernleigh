@@ -4,8 +4,11 @@ import Link from "next/link"
 import { supabase } from "../lib/supabaseClient"
 import { useRouter } from "next/navigation"
 import { Eye, EyeClosed } from "lucide-react"
+import { useToast } from "../context/ToastContext"
 
 export default function SignupPage() {
+    const { showToast } = useToast()
+
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [error, setError] = useState("")
@@ -16,12 +19,11 @@ export default function SignupPage() {
         e.preventDefault()
         const { data, error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) {
-            setError(error.message)
+            showToast(error.message, "error")
         }
         else {
-            setError("")
+            showToast("Logged in Successfully", "success")
             router.push("/catalog")
-            alert("Account Login successful")
         }
 
     }
@@ -46,17 +48,17 @@ export default function SignupPage() {
                         onChange={(e) => setPassword(e.target.value)}
                     />
                     {shown ? (
-                    <div className="p-3 h-full hover:bg-black/5" onClick={()=> setShown(false)}>
-                        <EyeClosed size={18}/>
-                    </div>
-                    ):
-                    (
-                    <div className="p-3 h-full hover:bg-black/5" onClick={()=> setShown(true)}>
-                        <Eye size={20}/>
-                    </div>
-                    )
-                }
-                    
+                        <div className="p-3 h-full hover:bg-black/5" onClick={() => setShown(false)}>
+                            <EyeClosed size={18} />
+                        </div>
+                    ) :
+                        (
+                            <div className="p-3 h-full hover:bg-black/5" onClick={() => setShown(true)}>
+                                <Eye size={20} />
+                            </div>
+                        )
+                    }
+
                 </div>
                 {error && <p className="py-2 text-center bg-red-100 border border-red-700 text-red-700 rounded-xl">{error}</p>}
                 <button type="submit" className="py-3 text-black bg-black/10 border border-black  rounded-full active:scale-95 transition-transform">

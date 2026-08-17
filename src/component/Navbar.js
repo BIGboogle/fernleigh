@@ -11,10 +11,16 @@ export default function Navbar() {
     console.log(user);
     const [scrolled, setScrolled] = useState(false);
     const pathname = usePathname();
-    const hideNav = pathname === "/login" || pathname === "/signup" || pathname === "/measurement"
+    const hideNav = pathname === "/login" || pathname === "/signup" || pathname === "/measurement" || pathname.endsWith("/checkout") || pathname === "/account"
     let altPath = ""
-    if (pathname.endsWith("bespoke") || pathname.endsWith("agbada") || pathname.endsWith("kaftan")) {
+    if (pathname.endsWith("bespoke")) {
         altPath = "bespoke"
+    }
+    else if (pathname.endsWith("kaftan")) {
+        altPath = "kaftan"
+    }
+    else if(pathname.endsWith("agbada")){
+        altPath = "agbada"
     }
 
     let currentPath = ""
