@@ -19,15 +19,18 @@ export default function Navbar() {
     else if (pathname.endsWith("kaftan")) {
         altPath = "kaftan"
     }
-    else if(pathname.endsWith("agbada")){
+    else if (pathname.endsWith("agbada")) {
         altPath = "agbada"
     }
 
     let currentPath = ""
-    if (pathname.startsWith("/catalog")) {
+    if (pathname === "/catalog") {
         currentPath = "All Catalog"
     }
-    else if (pathname.startsWith("/account")) {
+    if (pathname.includes("/catalog") && !pathname.endsWith("/catalog")) {
+        currentPath = "Product"
+    }
+    else if (pathname === "/account") {
         currentPath = "Account"
     }
 
